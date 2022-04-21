@@ -1,11 +1,13 @@
 import React from "react";
 import CreateTask from "./todoapp/CreateTask";
+// import { useState, useEffect } from "react";
 import TaskList from "./todoapp/TaskList";
 
 const tasks = localStorage.getItem("tasks")
   ? JSON.parse(localStorage.getItem("tasks"))
   : [];
-class Main extends React.Component {
+
+class Todo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,8 +21,8 @@ class Main extends React.Component {
       return;
     }
     tasks.push({ task, isCompleted: false });
-    this.setState({ tasks: tasks });
     localStorage.setItem("tasks", JSON.stringify(tasks));
+    this.setState({ tasks: tasks });
   };
   toggleTask = (taskId) => {
     const taskItem = tasks[taskId];
@@ -60,4 +62,4 @@ class Main extends React.Component {
   }
 }
 
-export default Main;
+// export default Todo;
