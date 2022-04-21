@@ -11,7 +11,7 @@ import styles from "./styles.modules.css";
 
 function Navbar() {
   return (
-    <nav className="nav">
+    <nav className="nav fixed-top change">
       <div className="left">
         <div className="logo">
           <Link to="/">eCommerce</Link>

@@ -1,3 +1,6 @@
+body {
+  padding-top: 70px;
+}
 .nav {
   padding: 13px;
   display: flex;
@@ -29,4 +32,7 @@
 
 .nav .right a:first-child {
   margin-right: 5px;
+}
+.change {
+  background: rgba(108, 95, 95, 0.508);
 }

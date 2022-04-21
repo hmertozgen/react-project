@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Grid } from "@chakra-ui/react";
 
 import Card from "../../Card";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function Products() {
   // https://fakestoreapi.com/products
