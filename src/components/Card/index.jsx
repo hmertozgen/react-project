@@ -1,6 +1,5 @@
-import { Box, Image, Button, Badge, Grid, Wrap } from "@chakra-ui/react";
+import { Box, Image, Button, Badge, Wrap } from "@chakra-ui/react";
 
-import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 function Card({ key, product }) {
@@ -32,7 +31,7 @@ function Card({ key, product }) {
             lineHeight="tight"
             height="10vh"
           >
-            {product.title}
+            {truncateOverview(product.title, 60)}
           </Box>
           <Box height="20vh">{truncateOverview(product.description, 100)}</Box>
 
