@@ -13,7 +13,7 @@ function Card({ key, product }) {
       key={product.id}
     >
       <Link to={`/product/${product.id}`}>
-        <Image width="70px" src={product.image} alt="product" />
+        <Image height="35vh" src={product.image} alt="product" />
 
         <Box p="6">
           <Box d="flex" alignItems="baseline">

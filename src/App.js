@@ -22,7 +22,7 @@ function App() {
         <Navbar />
         <div id="content">
           <Routes>
-            <Route path="/" element={<Products />}></Route>
+            <Route path="/products" element={<Products />}></Route>
 
             <Route path="/product/:id" element={<ProductDetail />}></Route>
             <Route path="/signin" element={<Signin />}></Route>
