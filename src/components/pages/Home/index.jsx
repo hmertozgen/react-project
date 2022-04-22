@@ -1,7 +1,12 @@
 import React from "react";
+import Todo from "../../Widgets/Todo";
 
 function Home() {
-  return <div>hi</div>;
+  return (
+    <div>
+      <Todo />
+    </div>
+  );
 }
 
 export default Home;

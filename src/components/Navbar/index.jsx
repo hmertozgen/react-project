@@ -5,6 +5,9 @@ import styles from "./styles.modules.css";
 import Signup from "../pages/Auth/Signup";
 import Signin from "../pages/Auth/Signin";
 
+import { useEffect } from "react";
+import { signUp, signIn } from "../../config/firebase";
+
 function Navbar() {
   const [show, setShow] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
@@ -27,6 +30,11 @@ function Navbar() {
           </li>
         </ul>
       </div>
+      <Link to="/basket">
+        <Button className="align-center" variant="primary">
+          Basket
+        </Button>
+      </Link>
       <div className="right">
         {/* <Link to="/signin"> */}
         <Button variant="secondary" onClick={handleShowLogin}>

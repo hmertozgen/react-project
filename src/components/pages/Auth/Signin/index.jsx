@@ -1,14 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 
 function Signin() {
+  // const loginWG = () => {
+  //   auth.signInWithPopup(provider).catch((e) => alert(e.message));
+  // };
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
+  const [successMsg, setSuccessMsg] = useState("");
+  const handleLogin = (e) => {
+    e.preventDefault();
+    console.log(email, password);
+  };
   return (
-    <Form>
+    <Form onSubmit={handleLogin}>
       <Form.Group>
         <Form.Control
           type="email"
           placeholder="Email *"
           required
+          onChange={(e) => setEmail(e.target.value)}
+          value={email}
         ></Form.Control>
       </Form.Group>
 
@@ -17,6 +30,8 @@ function Signin() {
           type="password"
           placeholder="password *"
           required
+          onChange={(e) => setPassword(e.target.value)}
+          value={password}
         ></Form.Control>
       </Form.Group>
 
@@ -28,7 +43,12 @@ function Signin() {
         Login
       </Button>
 
-      <Button variant="success" type="submit">
+      <Button
+        className="ms-2"
+        variant="primary"
+        // type="submit"
+        // onClick={loginWG}
+      >
         Login With Google
       </Button>
     </Form>

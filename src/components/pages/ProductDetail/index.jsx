@@ -2,10 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Box, Text, Button } from "@chakra-ui/react";
 import ImageGallery from "react-image-gallery";
+
 //id'ye erişmek için use params kullandık
 //react-image-gallery
+
 function ProductDetail() {
   const { id } = useParams();
+
   const [product, setProduct] = useState([]);
 
   useEffect(() => {
