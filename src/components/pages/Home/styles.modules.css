@@ -1,0 +1,10 @@
+/* .section {
+  background: url("https://picsum.photos/200/300") no-repeat;
+  background-size: cover;
+  height: calc(100vh-80px);
+} */
+
+.form {
+  bottom: 0px;
+  position: fixed;
+}

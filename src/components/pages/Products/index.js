@@ -15,26 +15,22 @@ function Products() {
   }, []);
 
   return (
-    // <div>
-    //   <div className="container">
-    //     <div className="row">
-    //       <div className="col">
-    //         {products.map((product, key) => (
-    //           <Card key={key} product={product} />
-    //         ))}
-    //       </div>
-    //     </div>
-    //   </div>
-    // </div>
     <div>
-      <div class="container">
-        <Grid templateColumns="repeat(4, 1fr)" gap={2}>
-          {products.map((product, key) => (
-            <Card key={key} product={product} />
-          ))}
-        </Grid>
+      <div className="container">
+        {products.map((product, key) => (
+          <Card key={key} product={product} />
+        ))}
       </div>
     </div>
+    // <div>
+    //   <div class="container">
+    //     <Grid templateColumns="repeat(4, 1fr)" gap={2}>
+    //       {products.map((product, key) => (
+    //         <Card key={key} product={product} />
+    //       ))}
+    //     </Grid>
+    //   </div>
+    // </div>
   );
 }
 
