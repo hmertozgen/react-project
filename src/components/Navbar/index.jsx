@@ -4,9 +4,11 @@ import { Link } from "react-router-dom";
 import styles from "./styles.modules.css";
 import Signup from "../pages/Auth/Signup";
 import Signin from "../pages/Auth/Signin";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../config/config";
 
 import { useEffect } from "react";
-import { signUp, signIn } from "../../config/firebase";
+import { signOut } from "firebase/auth";
 
 function Navbar() {
   const [show, setShow] = useState(false);
@@ -17,6 +19,8 @@ function Navbar() {
 
   const handleCloseLogin = () => setShowLogin(false);
   const handleShowLogin = () => setShowLogin(true);
+
+  const [user] = useAuthState(auth);
   return (
     <nav className="nav fixed-top change">
       <div className="left">
@@ -35,6 +39,21 @@ function Navbar() {
           Basket
         </Button>
       </Link>
+      <div>
+        {user && (
+          <>
+            <span>Signed is as {user.displayName || user.email}</span>
+            <button
+              className="btn btn-primary btn-sm me-3"
+              onClick={() => {
+                signOut(auth);
+              }}
+            >
+              Logout
+            </button>
+          </>
+        )}
+      </div>
       <div className="right">
         {/* <Link to="/signin"> */}
         <Button variant="secondary" onClick={handleShowLogin}>

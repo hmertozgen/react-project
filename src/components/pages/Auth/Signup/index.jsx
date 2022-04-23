@@ -1,8 +1,16 @@
 import { collection } from "firebase/firestore";
 import React, { useState, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
-import { auth, fs } from "../../../../config/firebase";
+// import { auth, fs } from "../../../../config/firebase";
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  updateProfile,
+} from "firebase/auth";
 // import { useHistory } from "react-router-dom";
+import "../../../../config/config";
+import { toast } from "@chakra-ui/react";
+import { db } from "../../../../config/config";
 
 export const Signup = () => {
   // const history = useHistory();
@@ -15,81 +23,83 @@ export const Signup = () => {
   const [phone, setPhone] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
-  const handleSignup = (e) => {
+  const registerUser = async (e) => {
     e.preventDefault();
+    let auth = getAuth();
+    try {
+      await createUserWithEmailAndPassword(auth, email, password)
+        .then(() => console.log("user is created"))
+        .catch((e) => console.log(e));
+      updateProfile(auth.currentUser, { displayName: fullname })
+        .then(() => {
+          setSuccessMsg("Signup Succesfull.");
+          setFullname("");
+          setEmail("");
+          setPassword("");
+          setRePassword("");
+          setAdress("");
+          setPhone("");
+          setErrorMsg("");
+          setTimeout(() => {
+            setSuccessMsg("");
+          }, 3000);
+        })
+        .catch((error) => {
+          setErrorMsg("This mail has been using");
+          setTimeout(() => {
+            setErrorMsg("");
+          }, 3000);
+        });
+    } catch (error) {
+      toast(error.code, { type: "error" });
+    }
     // console.log(fullname, email, password);
-    auth
-      .createUserWithEmailAndPassword(email, password)
-      .then((credentials) => {
-        // console.log(credentials);
-        collection(
-          fs,
-          "users",
-          credentials.user.uid
-            .set({
-              FullName: fullname,
-              Email: email,
-              Password: password,
-              RePassword: repassword,
-              Address: adress,
-              Phone: phone,
-            })
-            .then(() => {
-              setSuccessMsg("Signup Succesfull.");
-              setFullname("");
-              setEmail("");
-              setPassword("");
-              setAdress("");
-              setPhone("");
-              setErrorMsg("");
-              setTimeout(() => {
-                setSuccessMsg("");
-              }, 3000);
-            })
-        );
-        // fs.collection("users")
-        //   .doc(credentials.user.uid)
-        //   .set({
-        //     FullName: fullname,
-        //     Email: email,
-        //     Password: password,
-        //     RePassword: repassword,
-        //     Address: adress,
-        //     Phone: phone,
-        //   })
-        // .then(() => {
-        //   setSuccessMsg("Signup Succesfull.");
-        //   setFullname("");
-        //   setEmail("");
-        //   setPassword("");
-        //   setAdress("");
-        //   setPhone("");
-        //   setErrorMsg("");
-        //   setTimeout(() => {
-        //     setSuccessMsg("");
-        //   }, 3000);
-        // })
-        // .catch((error) => {
-        //   setErrorMsg(error.message);
-        // });
-      })
-      .catch((error) => {
-        setErrorMsg(error.message);
-      });
+    // auth
+    //   .createUserWithEmailAndPassword(email, password)
+    //   .then((credentials) => {
+    // console.log(credentials);
+
+    // fs.collection("users")
+    //   .doc(credentials.user.uid)
+    //   .set({
+    //     FullName: fullname,
+    //     Email: email,
+    //     Password: password,
+    //     RePassword: repassword,
+    //     Address: adress,
+    //     Phone: phone,
+    //   })
+    // .then(() => {
+    //   setSuccessMsg("Signup Succesfull.");
+    //   setFullname("");
+    //   setEmail("");
+    //   setPassword("");
+    //   setAdress("");
+    //   setPhone("");
+    //   setErrorMsg("");
+    //   setTimeout(() => {
+    //     setSuccessMsg("");
+    //   }, 3000);
+    // })
+    // .catch((error) => {
+    //   setErrorMsg(error.message);
+    // });
+    // })
+    // .catch((error) => {
+    //   setErrorMsg(error.message);
+    // });
   };
   return (
     <>
-      {successMsg ? (
+      {successMsg && (
         <>
-          <div className="success-msg">{successMsg}</div>
+          <div className="success-msg bg-success text-white">{successMsg}</div>
         </>
-      ) : (
-        ""
       )}
       <br />
       <br />
 
-      <Form onSubmit={handleSignup}>
+      <Form onSubmit={registerUser}>
         <Form.Group>
           <Form.Control
             type="text"
@@ -154,9 +164,10 @@ export const Signup = () => {
           Add New User
         </Button>
       </Form>
+      <br />
       {errorMsg && (
         <>
-          <div className="error-msg">{errorMsg}</div>
+          <div className="error-msg bg-danger text-white">{errorMsg}</div>
         </>
       )}
       <br></br>
