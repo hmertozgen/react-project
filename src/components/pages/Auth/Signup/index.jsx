@@ -27,68 +27,108 @@ export const Signup = () => {
     e.preventDefault();
     let auth = getAuth();
     try {
-      await createUserWithEmailAndPassword(auth, email, password)
-        .then(() => console.log("user is created"))
-        .catch((e) => console.log(e));
-      updateProfile(auth.currentUser, { displayName: fullname })
-        .then(() => {
-          setSuccessMsg("Signup Succesfull.");
-          setFullname("");
-          setEmail("");
-          setPassword("");
-          setRePassword("");
-          setAdress("");
-          setPhone("");
+      if (password.length < 6) {
+        setErrorMsg("password cant be under 6 characters");
+        setTimeout(() => {
           setErrorMsg("");
-          setTimeout(() => {
-            setSuccessMsg("");
-          }, 3000);
+        }, 3000);
+        return;
+      }
+      if (password !== repassword) {
+        setErrorMsg("passwords not match");
+        setTimeout(() => {
+          setErrorMsg("");
+        }, 3000);
+        return;
+      }
+      await createUserWithEmailAndPassword(auth, email, password)
+        .then(() => {
+          updateProfile(auth.currentUser, { displayName: fullname })
+            .then(() => {
+              setSuccessMsg("Signup Succesfull.");
+              setFullname("");
+              setEmail("");
+              setPassword("");
+              setRePassword("");
+              setAdress("");
+              setPhone("");
+              setErrorMsg("");
+              setTimeout(() => {
+                setSuccessMsg("");
+              }, 3000);
+            })
+            .catch((error) => {
+              if (password !== repassword) {
+                setErrorMsg("not equal");
+              }
+              setErrorMsg("This mail has been using");
+              setTimeout(() => {
+                setErrorMsg("");
+              }, 3000);
+            });
         })
-        .catch((error) => {
+        .catch((e) => {
+          if (password !== repassword) {
+            setErrorMsg("not equal");
+          }
+
           setErrorMsg("This mail has been using");
-          setTimeout(() => {
-            setErrorMsg("");
-          }, 3000);
         });
     } catch (error) {
       toast(error.code, { type: "error" });
+      setErrorMsg("This mail has been using");
+      setTimeout(() => {
+        setErrorMsg("");
+      }, 3000);
     }
-    // console.log(fullname, email, password);
-    // auth
-    //   .createUserWithEmailAndPassword(email, password)
-    //   .then((credentials) => {
-    // console.log(credentials);
-
-    // fs.collection("users")
-    //   .doc(credentials.user.uid)
-    //   .set({
-    //     FullName: fullname,
-    //     Email: email,
-    //     Password: password,
-    //     RePassword: repassword,
-    //     Address: adress,
-    //     Phone: phone,
-    //   })
-    // .then(() => {
-    //   setSuccessMsg("Signup Succesfull.");
-    //   setFullname("");
-    //   setEmail("");
-    //   setPassword("");
-    //   setAdress("");
-    //   setPhone("");
-    //   setErrorMsg("");
-    //   setTimeout(() => {
-    //     setSuccessMsg("");
-    //   }, 3000);
-    // })
-    // .catch((error) => {
-    //   setErrorMsg(error.message);
-    // });
-    // })
-    // .catch((error) => {
-    //   setErrorMsg(error.message);
-    // });
   };
+
+  // export const Signup = () => {
+  //   // const history = useHistory();
+
+  //   const [fullname, setFullname] = useState("");
+  //   const [email, setEmail] = useState("");
+  //   const [password, setPassword] = useState("");
+  //   const [repassword, setRePassword] = useState("");
+  //   const [adress, setAdress] = useState("");
+  //   const [phone, setPhone] = useState("");
+  //   const [errorMsg, setErrorMsg] = useState("");
+  //   const [successMsg, setSuccessMsg] = useState("");
+  //   const registerUser = async (e) => {
+  //     e.preventDefault();
+  //     let auth = getAuth();
+  //     try {
+  //       await createUserWithEmailAndPassword(auth, email, password)
+  //         .then(() => console.log("user is created"))
+  //         .catch((e) => console.log(e));
+  //       updateProfile(auth.currentUser, { displayName: fullname })
+  //         .then(() => {
+  //           setSuccessMsg("Signup Succesfull.");
+  //           setFullname("");
+  //           setEmail("");
+  //           setPassword("");
+  //           setRePassword("");
+  //           setAdress("");
+  //           setPhone("");
+  //           setErrorMsg("");
+  //           setTimeout(() => {
+  //             setSuccessMsg("");
+  //           }, 3000);
+  //         })
+  //         .catch((error) => {
+  //           if (password !== repassword) {
+  //             setErrorMsg("not equal");
+  //           }
+  //           setErrorMsg("This mail has been using");
+  //           setTimeout(() => {
+  //             setErrorMsg("");
+  //           }, 3000);
+  //         });
+  //     } catch (error) {
+  //       toast(error.code, { type: "error" });
+  //     }
+  //   };
+
   return (
     <>
       {successMsg && (

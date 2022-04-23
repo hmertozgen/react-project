@@ -1,4 +1,4 @@
-import { Button, Modal } from "react-bootstrap";
+import { Button, Container, Modal, Nav, NavDropdown } from "react-bootstrap";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./styles.modules.css";
@@ -25,7 +25,7 @@ function Navbar() {
     <nav className="nav fixed-top change">
       <div className="left">
         <div className="logo">
-          <Link to="/">eCommerce</Link>
+          <Link to="/">LOGO</Link>
         </div>
 
         <ul className="menu">

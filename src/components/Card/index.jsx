@@ -1,4 +1,5 @@
 import { Box, Image, Button, Badge, Wrap } from "@chakra-ui/react";
+import { Col, Container, Row } from "react-bootstrap";
 
 import { Link } from "react-router-dom";
 
@@ -9,6 +10,38 @@ function Card({ key, product }) {
     return `${string.substring(0, maxLength)} ...`;
   };
   return (
+    // <>
+    //   <div className="container">
+    //     <div className="row ">
+    //       <div className="col">
+    //         <div className="card" style={{}}>
+    //           <Link to={`/product/${product.id}`}>
+    //             <img src={product.image} alt="" className="card-img-top" />
+    //             <div className="card-body">
+    //               <h5 className="card-title">
+    //                 {truncateOverview(product.title, 60)}
+    //               </h5>
+    //               <p className="card-text">
+    //                 {truncateOverview(product.description, 100)}
+    //               </p>
+    //             </div>
+    //             <ul className="list-group list-group-flush">
+    //               <h3>
+    //                 <span className="badge bg-secondary">
+    //                   {product.rating.rate}
+    //                 </span>
+    //               </h3>
+    //               <li className="list-group-item">{product.price} TL</li>
+    //             </ul>
+    //           </Link>
+
+    //           <button className="btn btn-primary">Add To Cart</button>
+    //         </div>
+    //       </div>
+    //     </div>
+    //   </div>
+    // </>
+
     <Wrap
       borderWidth="1px"
       borderRadius="lg"
