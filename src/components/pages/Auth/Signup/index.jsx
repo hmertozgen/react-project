@@ -73,6 +73,9 @@ export const Signup = () => {
           }
 
           setErrorMsg("This mail has been using");
+          setTimeout(() => {
+            setErrorMsg("");
+          }, 3000);
         });
     } catch (error) {
       toast(error.code, { type: "error" });

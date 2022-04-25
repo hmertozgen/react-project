@@ -3,7 +3,7 @@ import { Col, Container, Row } from "react-bootstrap";
 
 import { Link } from "react-router-dom";
 
-function Card({ key, product }) {
+function Card({ key, product, handleAddProduct }) {
   const truncateOverview = (string, maxLength) => {
     if (!string) return null;
     if (string.length <= maxLength) return string;
@@ -74,7 +74,9 @@ function Card({ key, product }) {
         </Box>
       </Link>
       <Wrap align="center" spacing="30px" justify="center">
-        <Button colorScheme="pink">Add To Chart</Button>
+        <Button colorScheme="pink" onClick={() => handleAddProduct(product)}>
+          Add To Chart
+        </Button>
         <Box align="flex-start">{product.price} TL </Box>
       </Wrap>
     </Wrap>

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 
-import { Grid } from "@chakra-ui/react";
+// import { Grid } from "@chakra-ui/react";
 
 import Card from "../../Card";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
-function Products() {
+function Products({ handleAddProduct, handleRemoveProduct }) {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -16,9 +17,18 @@ function Products() {
 
   return (
     <div>
+      {/* <div className="text-white">
+        <i className="fa-solid fa-1"></i>
+        <i className="fa-solid fa-4"></i>
+      </div> */}
       <div className="container">
-        {products.map((product, key) => (
-          <Card key={key} product={product} />
+        {products.map((product) => (
+          <Card
+            key={product.id}
+            product={product}
+            handleAddProduct={handleAddProduct}
+            handleRemoveProduct={handleRemoveProduct}
+          />
         ))}
       </div>
     </div>

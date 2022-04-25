@@ -59,9 +59,13 @@ body {
 }
 
 .nav {
-  background: #0082e6;
+  background: #0082e6a5;
   height: 80px;
   width: 100%;
+  display: flex;
+  overflow: hidden;
+  justify-content: space-between;
+  float: right;
 }
 .logo {
   color: white;
@@ -73,7 +77,9 @@ body {
 
 .menu {
   float: right;
-  margin-right: 20px;
+  display: inline;
+  margin-right: 110px;
+  /* margin-left: 300px; */
 }
 
 nav ul li {
@@ -118,7 +124,14 @@ nav ul li .btn {
 #check {
   display: none;
 }
-
+@media (max-width: 1030px) {
+  .menu {
+    float: right;
+    display: inline;
+    /* margin-right: 20px; */
+    /* margin-left: 100px; */
+  }
+}
 @media (max-width: 952px) {
   .logo {
     font-size: 30px;
@@ -127,12 +140,17 @@ nav ul li .btn {
   nav ul li a {
     font-size: 16px;
   }
+  .menu {
+    float: right;
+    /* margin-right: 20px; */
+    margin-left: 0px;
+  }
 }
 
-@media (max-width: 858px) {
+@media (max-width: 1100px) {
   .checkbtn {
     display: block;
-    margin-left: 400px;
+    margin-left: 200px;
   }
   nav ul {
     position: fixed;
@@ -159,5 +177,21 @@ nav ul li .btn {
 
   #check:checked ~ ul {
     left: 0;
+  }
+  .menu {
+    float: right;
+    /* margin-right: 20px; */
+    margin-left: 0px;
+  }
+}
+@media (max-width: 600px) {
+  .checkbtn {
+    display: block;
+    margin-left: 70px;
+  }
+  .menu {
+    float: right;
+    /* margin-right: 20px; */
+    margin-left: 0px;
   }
 }

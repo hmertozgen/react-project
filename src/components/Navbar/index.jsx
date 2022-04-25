@@ -94,94 +94,195 @@ function Navbar() {
     //   </div>
     // </nav>
 
-    <nav className="nav fixed-top change44">
-      <div className="left44">
-        <input type="checkbox" id="check" />
-        <label htmlFor="check" className="checkbtn">
-          <i className="fas fa-bars"></i>
-        </label>
-        <label className="logo">
-          <Link to="/">LOGO</Link>
-        </label>
+    //--------------
 
-        <ul className="menu">
-          <li>
-            <Link className="a" to="/products">
-              Products
-            </Link>
-          </li>
-          <li>
-            <Link className="a" to="/basket">
-              <a className="align-center" variant="primary">
-                Basket
-              </a>
-            </Link>
-          </li>
-          <li>
-            <div>
-              {user && (
-                <>
-                  <span>Signed as {user.displayName || user.email}</span>
-                  <button
-                    className="btn btn-primary btn-sm me-3"
-                    onClick={() => {
-                      signOut(auth);
-                    }}
-                  >
-                    Logout
-                  </button>
-                </>
-              )}
-            </div>
-          </li>
-          <li>
-            {" "}
-            {/* <Link to="/signin"> */}
-            <a className="btn" variant="secondary" onClick={handleShowLogin}>
-              Login
-            </a>{" "}
-            {/* </Link> */}
-          </li>
-          <li>
-            {" "}
-            <a className="btn" variant="secondary" onClick={handleShow}>
-              Register
-            </a>{" "}
-          </li>
-        </ul>
-      </div>
+    // <nav className="nav fixed-top change44">
+    //   <div className="left44">
+    //     <input type="checkbox" id="check" />
+    //     <label htmlFor="check" className="checkbtn">
+    //       <i className="fas fa-bars"></i>
+    //     </label>
+    //     <label className="logo">
+    //       <Link to="/">LOGO</Link>
+    //     </label>
 
-      <div className="right">
-        <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Register</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <Signup />
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Close
-            </Button>
-            <Button variant="primary">Save Changes</Button>
-          </Modal.Footer>
-        </Modal>
-        <Modal show={showLogin} onHide={handleCloseLogin}>
-          <Modal.Header closeButton>
-            <Modal.Title>Login</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <Signin />
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleCloseLogin}>
-              Close
-            </Button>
-            <Button variant="primary">Save Changes</Button>
-          </Modal.Footer>
-        </Modal>
-      </div>
-    </nav>
+    //     <ul className="menu">
+    //       <li>
+    //         <div>
+    //           {user && (
+    //             <>
+    //               <span className="text-white m-2">
+    //                 {user.displayName || user.email}
+    //               </span>
+    //               <button
+    //                 className="btn btn-primary btn-sm me-3"
+    //                 onClick={() => {
+    //                   signOut(auth);
+    //                 }}
+    //               >
+    //                 Logout
+    //               </button>
+    //             </>
+    //           )}
+    //         </div>
+    //       </li>
+    //       <li>
+    //         <Link className="a" to="/products">
+    //           Products
+    //         </Link>
+    //       </li>
+    //       <li>
+    //         <Link className="a" to="/cart">
+    //           <a className="align-center" variant="primary">
+    //             Cart
+    //             <i className="fas fa-shopping-cart ms-1" />
+    //           </a>
+    //         </Link>
+    //       </li>
+
+    //       <li>
+    //         {" "}
+    //         {/* <Link to="/signin"> */}
+    //         <a className="btn" variant="secondary" onClick={handleShowLogin}>
+    //           Login
+    //         </a>{" "}
+    //         {/* </Link> */}
+    //       </li>
+    //       <li>
+    //         {" "}
+    //         <a className="btn" variant="secondary" onClick={handleShow}>
+    //           Register
+    //         </a>{" "}
+    //       </li>
+    //     </ul>
+    //   </div>
+
+    //   <div className="right">
+    //     <Modal show={show} onHide={handleClose}>
+    //       <Modal.Header closeButton>
+    //         <Modal.Title>Register</Modal.Title>
+    //       </Modal.Header>
+    //       <Modal.Body>
+    //         <Signup />
+    //       </Modal.Body>
+    //       <Modal.Footer>
+    //         <Button variant="secondary" onClick={handleClose}>
+    //           Close
+    //         </Button>
+    //         <Button variant="primary">Save Changes</Button>
+    //       </Modal.Footer>
+    //     </Modal>
+    //     <Modal show={showLogin} onHide={handleCloseLogin}>
+    //       <Modal.Header closeButton>
+    //         <Modal.Title>Login</Modal.Title>
+    //       </Modal.Header>
+    //       <Modal.Body>
+    //         <Signin />
+    //       </Modal.Body>
+    //       <Modal.Footer>
+    //         <Button variant="secondary" onClick={handleCloseLogin}>
+    //           Close
+    //         </Button>
+    //         <Button variant="primary">Save Changes</Button>
+    //       </Modal.Footer>
+    //     </Modal>
+    //   </div>
+    // </nav>
+
+    <>
+      <nav className="nav fixed-top change44">
+        <div className="left44">
+          <input type="checkbox" id="check" />
+          <label htmlFor="check" className="checkbtn">
+            <i className="fas fa-bars"></i>
+          </label>
+          <label className="logo">
+            <Link to="/">LOGO</Link>
+          </label>
+
+          <ul className="menu">
+            <li>
+              <Link className="a" to="/products">
+                Products
+              </Link>
+            </li>
+            <li>
+              <Link className="a" to="/cart">
+                <a className="align-center" variant="primary">
+                  Cart
+                  <i className="fas fa-shopping-cart ms-1" />
+                </a>
+              </Link>
+            </li>
+
+            <li>
+              {" "}
+              {/* <Link to="/signin"> */}
+              <a className="btn" variant="secondary" onClick={handleShowLogin}>
+                Login
+              </a>{" "}
+              {/* </Link> */}
+            </li>
+            <li>
+              {" "}
+              <a className="btn" variant="secondary" onClick={handleShow}>
+                Register
+              </a>{" "}
+            </li>
+            <li>
+              <div>
+                {user && (
+                  <>
+                    <span className="text-white m-2">
+                      {user.displayName || user.email}
+                    </span>
+                    <button
+                      className="btn btn-primary btn-sm me-3"
+                      onClick={() => {
+                        signOut(auth);
+                      }}
+                    >
+                      Logout
+                    </button>
+                  </>
+                )}
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div className="right">
+          <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Register</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <Signup />
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Close
+              </Button>
+              <Button variant="primary">Save Changes</Button>
+            </Modal.Footer>
+          </Modal>
+          <Modal show={showLogin} onHide={handleCloseLogin}>
+            <Modal.Header closeButton>
+              <Modal.Title>Login</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <Signin />
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleCloseLogin}>
+                Close
+              </Button>
+              <Button variant="primary">Save Changes</Button>
+            </Modal.Footer>
+          </Modal>
+        </div>
+      </nav>
+    </>
   );
 }
 
