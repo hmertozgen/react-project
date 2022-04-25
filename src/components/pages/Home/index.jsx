@@ -1,6 +1,7 @@
 import React from "react";
 import Clock from "../../Widgets/clock/Clock";
 import Todo from "../../Widgets/Todo";
+import TodoRoute from "../../Widgets/TodoRoute";
 import styles from "./styles.modules.css";
 
 function Home() {
@@ -15,6 +16,9 @@ function Home() {
             <div className="col-3">
               <Clock />
             </div>
+          </div>
+          <div>
+            <TodoRoute />
           </div>
         </div>
         <div>

@@ -6,7 +6,7 @@ import ImageGallery from "react-image-gallery";
 //id'ye erişmek için use params kullandık
 //react-image-gallery
 
-function ProductDetail() {
+function ProductDetail({ handleAddProduct }) {
   const { id } = useParams();
 
   const [product, setProduct] = useState([]);
@@ -27,9 +27,12 @@ function ProductDetail() {
       thumbnail: product.image,
     },
   ];
+
   return (
     <div>
-      <Button colorScheme="pink">Add To Chart</Button>
+      <Button colorScheme="pink" onClick={() => handleAddProduct(product)}>
+        Add To Chart
+      </Button>
 
       <Text as="h2" fontSize="3xl">
         {product.price} TL
