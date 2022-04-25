@@ -1,4 +1,5 @@
 import React from "react";
+import Clock from "../../Widgets/clock/Clock";
 import Todo from "../../Widgets/Todo";
 import styles from "./styles.modules.css";
 
@@ -6,10 +7,13 @@ function Home() {
   return (
     <>
       <section className="section">
-        <div className="container">
+        <div className="container ">
           <div className="row">
             <div className="col-6">
               <Todo />
+            </div>
+            <div className="col-6">
+              <Clock />
             </div>
           </div>
         </div>
