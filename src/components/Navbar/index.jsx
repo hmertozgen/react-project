@@ -202,10 +202,16 @@ function Navbar() {
 
           <ul className="menu">
             <li>
+              <Link className="a" to="/home">
+                Home
+              </Link>
+            </li>
+            <li>
               <Link className="a" to="/products">
                 Products
               </Link>
             </li>
+
             <li>
               <Link className="a" to="/cart">
                 <a className="align-center" variant="primary">

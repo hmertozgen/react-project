@@ -9,10 +9,10 @@ function Home() {
       <section className="section">
         <div className="container ">
           <div className="row">
-            <div className="col-6">
+            <div className="col-3">
               <Todo />
             </div>
-            <div className="col-6">
+            <div className="col-3">
               <Clock />
             </div>
           </div>

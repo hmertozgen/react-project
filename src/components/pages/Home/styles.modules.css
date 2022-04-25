@@ -8,3 +8,9 @@
   bottom: 0px;
   position: fixed;
 }
+
+.row {
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
