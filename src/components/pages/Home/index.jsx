@@ -1,25 +1,34 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Clock from "../../Widgets/clock/Clock";
 import Todo from "../../Widgets/Todo";
 import TodoRoute from "../../Widgets/TodoRoute";
-import styles from "./styles.modules.css";
+import "./styles.modules.css";
 
 function Home() {
   return (
     <>
       <section className="section">
-        <div className="container ">
+        <header>
           <div className="row">
-            <div className="col-3">
+            <div className="col-md-8 col-sm-6 fragment">
+              <Link to="/products">Go To Products</Link>
+            </div>
+          </div>
+        </header>
+
+        <div className="container ">
+          <div className="row mb-5">
+            <div className="col-md-6 col-sm-6">
               <Todo />
             </div>
-            <div className="col-3">
+            <div className="col-md-6 col-sm-6 ">
               <Clock />
             </div>
           </div>
-          <div>
+          {/* <div>
             <TodoRoute />
-          </div>
+          </div> */}
         </div>
         <div>
           <div className="container form ">
@@ -62,6 +71,7 @@ function Home() {
                         cols="100%"
                         placeholder="text"
                       ></textarea>
+                      <button className="btn btn-primary">Send</button>
                     </div>
                   </div>
                 </form>

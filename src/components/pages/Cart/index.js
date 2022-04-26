@@ -50,6 +50,7 @@ function Cart({ cartItems, handleAddProduct, handleRemoveProduct }) {
       <div className="cart-items-total-price-name">
         Total Price
         <div className="cart-items-total-price">{totalPrice} TL</div>
+        <button className="btn btn-success ms-3">BUY</button>
       </div>
     </div>
   );

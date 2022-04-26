@@ -1,16 +1,39 @@
-/* .section {
+.section {
   background: url("https://picsum.photos/200/300") no-repeat;
   background-size: cover;
-  height: calc(100vh-80px);
-} */
+  background-position: top center;
+  background-attachment: scroll;
+  background-repeat: no-repeat;
+  /* height: 100vh; */
+}
 
 .form {
   bottom: 0px;
-  position: fixed;
+  display: flex;
 }
 
 .row {
   justify-content: space-between;
   align-items: center;
   display: flex;
+}
+.fragment {
+  display: flex;
+  justify-content: space-around;
+
+  align-items: center;
+  padding: 20px;
+  font-size: 25px;
+  font-weight: 700;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 15%;
+  margin-top: 15%;
+  cursor: pointer;
+}
+.fragment:hover {
+  color: white;
+  border: 1px solid blanchedalmond;
+  border-radius: 15px;
+  background: rgb(181, 151, 151);
 }

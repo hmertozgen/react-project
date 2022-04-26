@@ -75,7 +75,8 @@
   display: flex;
   padding-top: 20px;
   padding-bottom: 20px;
-  padding-left: 22%;
+  padding-left: 15%;
+  padding-right: 15%;
   font-size: 20px;
   font-weight: 700;
   border-top: 2px solid black;
@@ -83,4 +84,38 @@
 .cart-items-total-price {
   display: flex;
   padding-left: 45%;
+}
+@media (max-width: 1000px) {
+  .cart-items {
+    overflow: auto;
+
+    margin: 30px auto;
+    width: 80%;
+    background: orange;
+    border: 2px solid black;
+    border-radius: 5px;
+  }
+}
+@media (max-width: 600px) {
+  .cart-items {
+    overflow: auto;
+
+    margin: 30px auto;
+    width: 90%;
+    background: orange;
+    border: 2px solid black;
+    border-radius: 5px;
+  }
+}
+
+@media (max-width: 500px) {
+  .cart-items {
+    overflow: auto;
+    margin: 30px auto;
+    width: 100%;
+    background: orange;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-size: 15px;
+  }
 }

@@ -269,7 +269,6 @@ function Navbar() {
               <Button variant="secondary" onClick={handleClose}>
                 Close
               </Button>
-              <Button variant="primary">Save Changes</Button>
             </Modal.Footer>
           </Modal>
           <Modal show={showLogin} onHide={handleCloseLogin}>
@@ -283,7 +282,6 @@ function Navbar() {
               <Button variant="secondary" onClick={handleCloseLogin}>
                 Close
               </Button>
-              <Button variant="primary">Save Changes</Button>
             </Modal.Footer>
           </Modal>
         </div>
