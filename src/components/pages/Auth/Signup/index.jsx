@@ -23,10 +23,18 @@ export const Signup = () => {
   const [phone, setPhone] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
+  const [checked, setChecked] = useState(false);
   const registerUser = async (e) => {
     e.preventDefault();
     let auth = getAuth();
     try {
+      if (checked == false) {
+        setErrorMsg("You must check");
+        setTimeout(() => {
+          setErrorMsg("");
+        }, 3000);
+        return;
+      }
       if (password.length < 6) {
         setErrorMsg("password cant be under 6 characters");
         setTimeout(() => {
@@ -85,52 +93,6 @@ export const Signup = () => {
       }, 3000);
     }
   };
-
-  // export const Signup = () => {
-  //   // const history = useHistory();
-
-  //   const [fullname, setFullname] = useState("");
-  //   const [email, setEmail] = useState("");
-  //   const [password, setPassword] = useState("");
-  //   const [repassword, setRePassword] = useState("");
-  //   const [adress, setAdress] = useState("");
-  //   const [phone, setPhone] = useState("");
-  //   const [errorMsg, setErrorMsg] = useState("");
-  //   const [successMsg, setSuccessMsg] = useState("");
-  //   const registerUser = async (e) => {
-  //     e.preventDefault();
-  //     let auth = getAuth();
-  //     try {
-  //       await createUserWithEmailAndPassword(auth, email, password)
-  //         .then(() => console.log("user is created"))
-  //         .catch((e) => console.log(e));
-  //       updateProfile(auth.currentUser, { displayName: fullname })
-  //         .then(() => {
-  //           setSuccessMsg("Signup Succesfull.");
-  //           setFullname("");
-  //           setEmail("");
-  //           setPassword("");
-  //           setRePassword("");
-  //           setAdress("");
-  //           setPhone("");
-  //           setErrorMsg("");
-  //           setTimeout(() => {
-  //             setSuccessMsg("");
-  //           }, 3000);
-  //         })
-  //         .catch((error) => {
-  //           if (password !== repassword) {
-  //             setErrorMsg("not equal");
-  //           }
-  //           setErrorMsg("This mail has been using");
-  //           setTimeout(() => {
-  //             setErrorMsg("");
-  //           }, 3000);
-  //         });
-  //     } catch (error) {
-  //       toast(error.code, { type: "error" });
-  //     }
-  //   };
 
   return (
     <>
@@ -200,7 +162,11 @@ export const Signup = () => {
           ></Form.Control>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
+          <Form.Check
+            type="checkbox"
+            label="Check me out"
+            onClick={() => setChecked(true)}
+          />
         </Form.Group>
 
         <Button variant="success" type="submit">

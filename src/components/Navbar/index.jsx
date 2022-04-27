@@ -65,7 +65,7 @@ function Navbar() {
               <div>
                 {user && (
                   <>
-                    <span className="text-white m-2">
+                    <span className="text-black me-1">
                       {user.displayName || user.email}
                     </span>
                     <button

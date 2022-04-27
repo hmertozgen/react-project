@@ -17,17 +17,17 @@ function Cart({ cartItems, handleAddProduct, handleRemoveProduct }) {
         {" "}
         {cartItems.map((item) => (
           <>
-            <div key={item.id} className="cart-items-list">
+            <div key={item.id} className="cart-items-list row">
               <img
                 src={item.image}
                 alt={item.name}
-                className="cart-items-image"
+                className="cart-items-image col"
               />
 
-              <div className="cart-items-title">{item.title}</div>
+              <div className="cart-items-title col">{item.title}</div>
 
-              <div className="cart-items-price">{item.price} TL</div>
-              <div className="car-items-functions">
+              <div className="cart-items-price col">{item.price} TL</div>
+              <div className="cart-items-functions col">
                 <button
                   className="cart-items-add"
                   onClick={() => handleAddProduct(item)}
@@ -42,7 +42,7 @@ function Cart({ cartItems, handleAddProduct, handleRemoveProduct }) {
                 </button>
               </div>
 
-              <div className="cart-items-quantity">{item.quantity}</div>
+              <div className="cart-items-quantity col">{item.quantity}</div>
             </div>
           </>
         ))}
