@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Clock from "../../Widgets/clock/Clock";
 import Todo from "../../Widgets/Todo";
@@ -6,15 +6,8 @@ import Todo from "../../Widgets/Todo";
 import "./styles.modules.css";
 
 function Home() {
-  const handleNews = (e) => {
-    if (e.target.value == "") {
-      {
-        <p>Boş kalmaz</p>;
-      }
-    } else {
-      alert("Thanks for Subscribe");
-    }
-  };
+  const [mail, setMail] = useState("");
+
   return (
     <>
       <section className="hero">
@@ -22,7 +15,7 @@ function Home() {
         <h2 className="normal">Super value deals</h2>
         <h1 className="big">On all products</h1>
         <p className="p">Save more with coupons & up to 70% offf!</p>
-        <button className="btn btn-success">
+        <button className="btn btn-success shop">
           <Link to="/products">Shop Now</Link>
         </button>
       </section>
@@ -62,10 +55,20 @@ function Home() {
           </p>
         </div>
         <div className="form">
-          <input type="mail" placeholder="Your email address" />
+          <input
+            type="mail"
+            placeholder="Your email address"
+            value={mail}
+            onChange={(e) => {
+              setMail(e.target.value);
+            }}
+          />
           <button
             className="btn btn-success"
-            onClick={() => alert("Thanks for subscribe")}
+            onClick={() => {
+              alert("Thanks for subscribe");
+              setMail("");
+            }}
           >
             Subscribe
           </button>

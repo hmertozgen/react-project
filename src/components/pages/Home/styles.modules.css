@@ -254,3 +254,7 @@ footer .copyright {
 .head {
   justify-content: space-between;
 }
+.shop:hover {
+  color: green;
+  background: #fff;
+}

@@ -5,6 +5,9 @@ function TodoComp() {
 
   const [tasks, setTasks] = useState([]);
 
+  const [toggleSubmit, setToggleSubmit] = useState(true);
+  const [isEditItem, setIsEditItem] = useState(null);
+
   useEffect(() => {
     if (localStorage.getItem("localTasks")) {
       const storedList = JSON.parse(localStorage.getItem("localTasks"));
@@ -13,7 +16,18 @@ function TodoComp() {
   }, []);
 
   const addTask = (e) => {
-    // e.preventDefault();
+    if (!task) {
+      alert("please fill data");
+    } else if (task && !toggleSubmit) {
+      setTask(
+        tasks.map((elem) => {
+          if (elem.id === isEditItem) {
+            return { ...elem, task: task };
+          }
+          return elem;
+        })
+      );
+    }
     if (task) {
       const newTask = { id: Math.random() * 4564564546, title: task };
       setTasks([...tasks, newTask]);
@@ -30,6 +44,16 @@ function TodoComp() {
   const handleClear = () => {
     setTasks([]);
     localStorage.removeItem("localTasks");
+  };
+  const handleUpdate = (task, newValue) => {
+    let newEditItem = tasks.find((elem) => {
+      return elem.id === task.id;
+    });
+
+    console.log(newEditItem);
+    setToggleSubmit(false);
+    setTask(newEditItem.title);
+    setIsEditItem(task.id);
   };
   return (
     <div className="container row">
@@ -63,17 +87,25 @@ function TodoComp() {
         <div>
           {tasks.map((task) => (
             <div key={task.id} className="row">
-              <div className="col-11">
+              <div className="col-10">
                 <span className="form-control bg-white btn mt-2 spa">
                   {task.title}
                 </span>
               </div>
               <div className="col-1">
                 <button
-                  className="mt-2 btn btn-warning"
+                  className="mt-2 btn btn-danger"
                   onClick={() => handleDelete(task)}
                 >
                   Delete
+                </button>
+              </div>
+              <div className="col-1">
+                <button
+                  className="mt-2 btn btn-warning"
+                  onClick={() => handleUpdate(task)}
+                >
+                  Edit
                 </button>
               </div>
             </div>

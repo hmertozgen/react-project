@@ -57,8 +57,8 @@ function Navbar() {
               </Link>
             </li>
             <li>
-              <Link to="#" className="Link">
-                Contact
+              <Link to="/todoapp" className="Link">
+                Todo
               </Link>
             </li>
             <li>
