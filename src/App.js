@@ -16,6 +16,7 @@ import ProductDetail from "./components/pages/ProductDetail";
 import Home from "./components/pages/Home";
 import Cart from "./components/pages/Cart";
 import { useEffect, useState } from "react";
+import TodoApp from "./components/Widgets/todo/TodoApp";
 
 const localData = localStorage.getItem("cartItems");
 
@@ -90,6 +91,8 @@ function App() {
             ></Route>
             <Route path="/signin" element={<Signin />}></Route>
             <Route path="/signup" element={<Signup />}></Route>
+
+            <Route path="/todoapp" element={<TodoApp />}></Route>
           </Routes>
         </div>
       </div>

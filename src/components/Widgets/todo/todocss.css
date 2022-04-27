@@ -1,0 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.cap {
+  background-image: url("../../pages/Home/img/nature.jpg");
+  background-size: cover;
+}
+.spa {
+  text-align: left;
+  font-weight: bold;
+}
