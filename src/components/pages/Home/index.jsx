@@ -73,6 +73,54 @@ function Home() {
         </div>
       </section>
 
+      <footer className="section-p1">
+        <div className="col">
+          <img src={require("./img/logo.png")} alt="logo" className="logo" />
+          <h4 className="smaller">Contact</h4>
+          <p className="p">
+            <strong>Address: </strong> Street 4, Istanbul,Sisli
+          </p>
+          <p className="p">
+            <strong>Phone: </strong> +905058763918
+          </p>
+          <p className="p">
+            <strong>Hours: </strong> 09:00-19:00, Monday - Saturday
+          </p>
+          <div className="follow">
+            <h4 className="smaller">Follow Us</h4>
+            <div className="icon">
+              <Link to="/" className="a">
+                <i className="fab fa-facebook-f"></i>
+              </Link>
+              <Link to="/" className="a">
+                <i className="fab fa-twitter"></i>
+              </Link>
+              <Link to="/" className="a">
+                <i className="fab fa-linkedin"></i>
+              </Link>
+              <Link to="/" className="a">
+                <i className="fab fa-youtube"></i>
+              </Link>
+            </div>
+          </div>
+        </div>
+        <div className="col">
+          <h4 className="smaller">About</h4>
+          <Link to="/about">About us</Link>
+          <Link to="/about">Privacy Policy</Link>
+          <Link to="/about">Terms & conditions</Link>
+          <Link to="/contact">Contact us</Link>
+        </div>
+
+        <div className="col pay">
+          <p className="p">Secured Payment Gateways</p>
+          <img src={require("./img/pay/pay.png")} alt="pay" />
+        </div>
+        <div className="copyright">
+          <p className="p">© 2022, React Ecommerce.</p>
+        </div>
+      </footer>
+
       {/* <section className="section">
         <header>
           <div className="row">

@@ -209,7 +209,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px;
+  padding: 20px 80px;
   background-color: #e3e6f3;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.09);
   z-index: 999;
@@ -218,32 +218,33 @@ body {
   left: 0;
 }
 
-.navbar {
+.navbarr {
+  position: sticky;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.navbar li {
+.navbarr li {
   list-style: none;
   padding: 0 20px;
   position: relative;
 }
 
-.navbar li .Link {
+.navbarr li .Link {
   text-decoration: none;
   font-size: 16px;
   font-weight: 600;
   color: #1a1a1a;
   transition: 0.4s ease;
 }
-.navbar li .Link:hover,
-.navbar li .Link.active {
+.navbarr li .Link:hover,
+.navbarr li .Link.active {
   color: #088178;
 }
 
-.navbar li .Link.active::after,
-.navbar li .Link:hover::after {
+.navbarr li .Link.active::after,
+.navbarr li .Link:hover::after {
   content: "";
   width: 30%;
   height: 2px;
@@ -251,4 +252,73 @@ body {
   position: absolute;
   bottom: -4px;
   left: 20px;
+}
+.mobile {
+  display: none;
+  align-items: center;
+}
+
+.checkbtn {
+  font-size: 30px;
+  color: white;
+  float: right;
+  line-height: 80px;
+  margin-right: 40px;
+  cursor: pointer;
+  display: none;
+}
+
+#checkk {
+  display: none;
+}
+
+@media (max-width: 799px) {
+  .navbarr {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: fixed;
+    top: 60px;
+    right: 0;
+
+    text-align: center;
+
+    height: 100vh;
+    width: 300px;
+    background-color: #e3e6f3;
+    box-shadow: 0 40px 60px rgba(0, 0, 0, 0.1);
+    padding: 80px 0 0 10px;
+    transition: all 0.5s;
+  }
+  #checkk:checked + .navbarr {
+    left: -100%;
+  }
+  .checkbtn {
+    font-size: 30px;
+    color: white;
+    float: right;
+    line-height: 80px;
+    margin-right: 10px;
+    cursor: pointer;
+    display: flex;
+  }
+
+  .navbarr li {
+    margin-bottom: 25px;
+    display: block;
+  }
+  .mobile {
+    display: flex;
+    align-items: flex;
+  }
+  .mobile .fas:hover {
+    color: #088178;
+  }
+
+  .mobile i {
+    color: #1a1a1a;
+    font-size: 24px;
+    padding-left: 20px;
+  }
 }

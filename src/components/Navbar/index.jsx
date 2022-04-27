@@ -23,20 +23,20 @@ function Navbar() {
   const [user] = useAuthState(auth);
   return (
     <>
-      <section className="header">
-        <Link to="/" className="logo">
+      <div className="header">
+        <Link to="/" className="logo Link">
           LOGO
         </Link>
-
         <div>
-          <ul className="navbar">
+          <input type="checkbox" id="checkk" />
+          <ul className="navbarr">
             <li>
-              <Link to="home" className="Link active">
+              <Link to="home" className="Link ">
                 Home
               </Link>
             </li>
             <li>
-              <Link to="/products" className="Link">
+              <Link to="/products" className="Link ">
                 Products
               </Link>
             </li>
@@ -82,6 +82,15 @@ function Navbar() {
             </li>
           </ul>
         </div>
+        <div className="mobile">
+          <Link to="/cart" className="Link">
+            <i className="fas fa-shopping-cart ms-1" />
+          </Link>
+
+          <label htmlFor="checkk" className="checkbtn">
+            <i className="fas fa-bars"></i>
+          </label>
+        </div>
 
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
@@ -109,7 +118,7 @@ function Navbar() {
             </Button>
           </Modal.Footer>
         </Modal>
-      </section>
+      </div>
 
       {/* <nav className="nav fixed-top change44">
         <div className="left44">
