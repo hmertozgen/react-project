@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Clock from "../../Widgets/clock/Clock";
-import Todo from "../../Widgets/Todo";
 
 import "./styles.modules.css";
 

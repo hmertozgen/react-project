@@ -1,13 +1,8 @@
 import "./App.css";
-// import Todo from "./components/Todo";
-import {
-  BrowserRouter as Router,
-  // Switch,
-  Route,
-  Routes,
-} from "react-router-dom";
+
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
-// import { useState, useEffect } from "react";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import Signin from "./components/pages/Auth/Signin";
 import Signup from "./components/pages/Auth/Signup";
@@ -16,7 +11,8 @@ import ProductDetail from "./components/pages/ProductDetail";
 import Home from "./components/pages/Home";
 import Cart from "./components/pages/Cart";
 import { useEffect, useState } from "react";
-import TodoApp from "./components/Widgets/todo/TodoApp";
+
+import TodoWidget from "./components/Widgets/todoapp/TodoWidget";
 
 const localData = localStorage.getItem("cartItems");
 
@@ -92,7 +88,7 @@ function App() {
             <Route path="/signin" element={<Signin />}></Route>
             <Route path="/signup" element={<Signup />}></Route>
 
-            <Route path="/todoapp" element={<TodoApp />}></Route>
+            <Route path="/todoapp" element={<TodoWidget />}></Route>
           </Routes>
         </div>
       </div>
