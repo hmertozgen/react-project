@@ -9,7 +9,7 @@ import { plus } from "react-icons-kit/feather/plus";
 import { edit2 } from "react-icons-kit/feather/edit2";
 import { trash } from "react-icons-kit/feather/trash";
 
-// get todos from local storage
+// getting todos from local storage
 const getTodosFromLS = () => {
   const data = localStorage.getItem("Todos");
   if (data) {
@@ -31,9 +31,10 @@ export const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // creating a ID for every todo
+    // creating a unique ID for every todo
     const date = new Date();
     const time = date.getTime();
+    // end of creating a ID
 
     // creating a todo object
     let todoObject = {
@@ -41,20 +42,17 @@ export const Form = () => {
       TodoValue: todoValue,
       completed: false,
     };
-    // updating todos state
+    // end of creating a todo object
     setTodos([...todos, todoObject]);
-    // clearing input field
     setTodoValue("");
   };
 
   // saving data to local storage
   useEffect(() => {
     localStorage.setItem("Todos", JSON.stringify(todos));
-    // we are updating todos in local storage whenever our todos state
-    // is changing
-  }, [todos]); // useEffect will run whenever our todos state changes
+  }, [todos]);
 
-  // delete a todo
+  // delete todo
   const handleDelete = (id) => {
     // console.log(id);
     const filtered = todos.filter((todo) => {
@@ -69,24 +67,46 @@ export const Form = () => {
   // id state
   const [id, setId] = useState();
 
-  // handle edit icon
+  // edit todo
   const handleEdit = (todo, index) => {
     setEditForm(true);
-    setId(index);
     setTodoValue(todo.TodoValue);
+    setId(index);
   };
 
-  // handle edit submit
+  // edit todo submit
   const handleEditSubmit = (e) => {
     e.preventDefault();
+    // copying todos state in items variable
     let items = [...todos];
+    // storing the element at a particular index in item variable
     let item = items[id];
+    // manipulating the item (object) keys
     item.TodoValue = todoValue;
-    // item.completed = false;
+    item.completed = false;
+    // after manipulating item, saving it at the same index in items
     items[id] = item;
+    // updating todos with items
     setTodos(items);
-    setTodoValue("");
     setEditForm(false);
+    setTodoValue("");
+  };
+
+  // handle checkbox
+  const handleCheckbox = (id) => {
+    let todoArray = [];
+    todos.forEach((todo) => {
+      if (todo.ID === id) {
+        if (todo.completed === false) {
+          todo.completed = true;
+        } else if (todo.completed === true) {
+          todo.completed = false;
+        }
+      }
+      todoArray.push(todo);
+      // console.log(todoArray);
+      setTodos(todoArray);
+    });
   };
 
   return (
@@ -121,13 +141,13 @@ export const Form = () => {
             <div className="input-and-button">
               <input
                 type="text"
-                placeholder="Add an Item"
+                placeholder="Edit your Item"
                 required
                 onChange={(e) => setTodoValue(e.target.value)}
                 value={todoValue}
               />
               <div className="button edit">
-                <button type="submit">Update</button>
+                <button type="submit">UPDATE</button>
               </div>
             </div>
           </form>
@@ -135,19 +155,35 @@ export const Form = () => {
       )}
       {/* end of edit form component */}
 
-      {/* start of rendering todos if we have todos.length > 0 */}
+      {/* start of rendering todos depending on
+          if we have length of todos greater than 0 */}
       {todos.length > 0 && (
         <>
           {todos.map((individualTodo, index) => (
             <div className="todo" key={individualTodo.ID}>
-              {/* checkbox and value div   */}
               <div>
-                {editForm === false && <input type="checkbox" />}
-                <span>{individualTodo.TodoValue}</span>
+                {/* we dont need to show checkbox when edit
+                      button is clicked */}
+                {editForm === false && (
+                  <input
+                    type="checkbox"
+                    checked={individualTodo.completed}
+                    onChange={() => handleCheckbox(individualTodo.ID)}
+                  />
+                )}
+                <span
+                  style={
+                    individualTodo.completed === true
+                      ? { textDecoration: "line-through" }
+                      : { textDecoration: "none" }
+                  }
+                >
+                  {individualTodo.TodoValue}
+                </span>
               </div>
 
-              {/* edit and delete icon div */}
-
+              {/* we dont need to show edit and delete icons when edit
+                  button is clicked */}
               {editForm === false && (
                 <div className="edit-and-delete">
                   <div
@@ -156,7 +192,6 @@ export const Form = () => {
                   >
                     <Icon icon={edit2} size={18} />
                   </div>
-
                   <div onClick={() => handleDelete(individualTodo.ID)}>
                     <Icon icon={trash} size={18} />
                   </div>
@@ -164,16 +199,19 @@ export const Form = () => {
               )}
             </div>
           ))}
-          {/* just after map closing brackets */}
 
           {/* delete all todos */}
-          <div style={{ display: "flex", justifyContent: "flex-end" }}>
-            <button onClick={() => setTodos([])} className="delete-all">
-              DELETE ALL
-            </button>
-          </div>
+          {editForm === false && (
+            <div style={{ display: "flex", justifyContent: "flex-end" }}>
+              <button className="delete-all" onClick={() => setTodos([])}>
+                Delete All Items
+              </button>
+            </div>
+          )}
         </>
       )}
+      {/* end of rendering todos depending on
+          if we have length of todos greater than 0 */}
     </>
   );
 };
