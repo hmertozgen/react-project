@@ -1,20 +1,16 @@
-import { collection } from "firebase/firestore";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
-// import { auth, fs } from "../../../../config/firebase";
+
 import {
   createUserWithEmailAndPassword,
   getAuth,
   updateProfile,
 } from "firebase/auth";
-// import { useHistory } from "react-router-dom";
+
 import "../../../../config/config";
 import { toast } from "@chakra-ui/react";
-import { db } from "../../../../config/config";
 
 export const Signup = () => {
-  // const history = useHistory();
-
   const [fullname, setFullname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

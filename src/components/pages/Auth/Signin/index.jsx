@@ -1,4 +1,3 @@
-import { toast } from "@chakra-ui/react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
@@ -6,9 +5,6 @@ import { auth } from "../../../../config/config";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 function Signin() {
-  // const loginWG = () => {
-  //   auth.signInWithPopup(provider).catch((e) => alert(e.message));
-  // };
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");

@@ -9,6 +9,7 @@ function Home() {
 
   return (
     <>
+      {/* Start-Hero Background and Header */}
       <section className="hero">
         <h4 className="smaller">Trade-in-offer</h4>
         <h2 className="normal">Super value deals</h2>
@@ -18,6 +19,10 @@ function Home() {
           <Link to="/products">Shop Now</Link>
         </button>
       </section>
+      {/* End-Hero Background and Header */}
+
+      {/* Start-Features */}
+
       <section className="feature section-p1 ">
         <div className="fe-box">
           <img src={require("./img/features/f1.png")} alt="fe-ship" />
@@ -44,6 +49,9 @@ function Home() {
           <h6 className="small">24/7 Support</h6>
         </div>
       </section>
+      {/* End-Features */}
+
+      {/* Start-Newsletter */}
 
       <section className="newsletter section-p1 section-m1">
         <div className="newstext">
@@ -73,7 +81,15 @@ function Home() {
           </button>
         </div>
       </section>
+      {/* End-Newsletter */}
+
+      {/* Start-Clock */}
+
       <Clock className="clock" />
+
+      {/* End-Clock */}
+
+      {/* Start-Footer */}
 
       <footer className="section-p1">
         <div className="col">
@@ -122,6 +138,8 @@ function Home() {
           <p className="p">© 2022, React Ecommerce.</p>
         </div>
       </footer>
+
+      {/* End-Footer */}
     </>
   );
 }

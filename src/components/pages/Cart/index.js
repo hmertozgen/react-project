@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 
-import Signup from "../Auth/Signup";
 import Buy from "./Buy";
 import "./styles.modules.css";
 
